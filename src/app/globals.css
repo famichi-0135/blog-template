@@ -1,0 +1,44 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@import "highlight.js/styles/github-dark.css";
+
+:root {
+  --foreground: rgb(13, 17, 23);
+}
+
+@theme inline {
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: linear-gradient(to bottom right, #eff6ff, #ffffff, #faf5ff);
+  min-height: 100vh;
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Enhanced heading styles */
+.prose h2 {
+  font-weight: 800;
+  border-left: 4px solid #3b82f6;
+  padding-left: 1rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.prose h3 {
+  font-weight: 700;
+  border-left: 3px solid #93c5fd;
+  padding-left: 0.875rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.prose h4 {
+  font-weight: 600;
+  color: #3b82f6;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
