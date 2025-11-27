@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const Header = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -28,8 +29,13 @@ const Header = () => {
 
   const navLinks = [
     { href: "/", label: "Home" },
+    { href: "/tags", label: "Tags" },
     { href: "/about", label: "About" },
-    { href: "https://github.com", label: "GitHub", external: true },
+    {
+      href: "https://github.com/famichi-0135",
+      label: "GitHub",
+      external: true,
+    },
   ];
 
   return (
@@ -45,7 +51,13 @@ const Header = () => {
             href="/"
             className="text-lg md:text-2xl font-bold tracking-tight hover:opacity-70 transition-opacity text-neutral-900 whitespace-nowrap"
           >
-            Famichi_Blog
+            {/* Famichi_Blog */}
+            <Image
+              src="/headerlogo.png"
+              width={120}
+              height={50}
+              alt="Picture of the author"
+            />
           </Link>
 
           {/* Desktop Navigation */}
