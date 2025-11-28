@@ -57,7 +57,7 @@ const TableOfContents = ({ toc }: TableOfContentsProps) => {
   }
 
   return (
-    <nav className="sticky top-24 max-h-[calc(100vh-6rem)] overflow-auto">
+    <nav className="sticky top-24 max-h-[calc(100vh-16rem)] overflow-auto">
       <h4 className="text-sm font-bold text-neutral-900 mb-4 uppercase tracking-wider">
         Table of Contents
       </h4>
