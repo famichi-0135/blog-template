@@ -5,6 +5,7 @@ import { remark } from "remark";
 import remarkRehype from "remark-rehype";
 import rehypeHighlight from "rehype-highlight";
 // import rehypePrettyCode from "rehype-pretty-code";
+import remarkGfm from "remark-gfm";
 import rehypeStringify from "rehype-stringify";
 import * as cheerio from "cheerio";
 import GithubSlugger from "github-slugger";
@@ -23,6 +24,7 @@ export interface PostData {
   date: string;
   excerpt: string;
   coverImage?: string;
+  tags?: string[];
   contentHtml?: string;
   toc?: TOCItem[];
 }
@@ -49,6 +51,7 @@ export function getSortedPostsData(): PostData[] {
         date: string;
         excerpt: string;
         coverImage?: string;
+        tags?: string[];
       }),
     };
   });
@@ -81,7 +84,9 @@ export async function getPostData(slug: string): Promise<PostData> {
   const matterResult = matter(fileContents);
 
   // Use remark to convert markdown into HTML string with syntax highlighting
+  // remark-gfm enables GitHub Flavored Markdown features (tables, task lists, strikethrough, etc.)
   const processedContent = await remark()
+    .use(remarkGfm)
     .use(remarkRehype)
     .use(rehypeHighlight)
     .use(rehypeStringify)
@@ -117,6 +122,49 @@ export async function getPostData(slug: string): Promise<PostData> {
       date: string;
       excerpt: string;
       coverImage?: string;
+      tags?: string[];
     }),
   };
+}
+
+/**
+ * 全記事から一意のタグを取得
+ */
+export function getAllTags(): string[] {
+  const allPosts = getSortedPostsData();
+  const tagsSet = new Set<string>();
+
+  allPosts.forEach((post) => {
+    if (post.tags) {
+      post.tags.forEach((tag) => tagsSet.add(tag));
+    }
+  });
+
+  return Array.from(tagsSet).sort();
+}
+
+/**
+ * 特定のタグを持つ記事を取得
+ */
+export function getPostsByTag(tag: string): PostData[] {
+  const allPosts = getSortedPostsData();
+  return allPosts.filter((post) => post.tags && post.tags.includes(tag));
+}
+
+/**
+ * タグごとの記事数を取得
+ */
+export function getTagCounts(): Record<string, number> {
+  const allPosts = getSortedPostsData();
+  const tagCounts: Record<string, number> = {};
+
+  allPosts.forEach((post) => {
+    if (post.tags) {
+      post.tags.forEach((tag) => {
+        tagCounts[tag] = (tagCounts[tag] || 0) + 1;
+      });
+    }
+  });
+
+  return tagCounts;
 }

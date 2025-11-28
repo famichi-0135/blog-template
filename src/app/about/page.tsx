@@ -9,7 +9,7 @@ export default function About() {
               About Me
             </h1>
             <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
-              Web開発とデザインに情熱を注ぐエンジニア
+              Web開発とITに情熱を注ぐIT系専門学生
             </p>
           </div>
 

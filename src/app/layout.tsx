@@ -15,8 +15,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "My Awesome Blog",
-  description: "A blog built with Next.js and Tailwind CSS",
+  title: "Famichi Blog",
+  description:
+    "日々、ITに関する様々な事柄を勉強する中での備忘録や考察を綴ったブログです。",
+  
 };
 
 export default function RootLayout({

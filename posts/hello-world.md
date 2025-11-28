@@ -3,6 +3,7 @@ title: "Next.jsとTailwind CSSでブログを作る"
 date: "2023-11-26"
 excerpt: "Next.js App RouterとTailwind CSSを使って、Markdownベースのブログを構築する方法を紹介します。"
 coverImage: "/assets/blog/hello-world/cover.jpg"
+tags: ["Next.js", "Tailwind CSS", "チュートリアル"]
 ---
 
 # はじめに
