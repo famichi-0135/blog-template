@@ -15,12 +15,12 @@ export default function TagsPage() {
           タグで記事を分類しています。気になるタグを選んでください。
         </p>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-4">
           {tags.map((tag) => (
             <Link
               key={tag}
               href={`/tags/${encodeURIComponent(tag)}`}
-              className="group block bg-white/80 backdrop-blur-sm rounded-xl shadow-md border border-neutral-200/50 p-4 hover:shadow-xl transition-all duration-200 hover:-translate-y-1"
+              className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r from-blue-50 to-purple-50 text-blue-700 border border-blue-200 hover:border-blue-300 hover:shadow-md transition-all duration-200 py-4"
             >
               <div className="flex items-center justify-between gap-2">
                 <div className="flex items-center gap-2">
@@ -36,8 +36,8 @@ export default function TagsPage() {
                       clipRule="evenodd"
                     />
                   </svg>
-                  <h2 className="text-sm sm:text-base font-medium text-neutral-900 group-hover:text-blue-600 transition-colors">
-                    {tag}
+                  <h2 className="text-sm sm:text-base font-medium text-neutral-900 group-hover:text-blue-600 transition-colors ">
+                    <p className="">{tag}</p>
                   </h2>
                 </div>
                 <span className="text-xs text-neutral-500">

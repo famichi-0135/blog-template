@@ -28,7 +28,7 @@ const Header = () => {
   }, [lastScrollY]);
 
   const navLinks = [
-    { href: "/", label: "Home" },
+    { href: "/posts", label: "Article" },
     { href: "/tags", label: "Tags" },
     { href: "/about", label: "About" },
     {
