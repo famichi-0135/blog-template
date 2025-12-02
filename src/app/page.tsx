@@ -1,30 +1,21 @@
 import { getSortedPostsData } from "@/lib/posts";
 import Link from "next/link";
-import HeroBackground from "@/components/HeroBackground";
-
+import { Hero } from "@/components/Hero";
+import { AllTagsCard } from "@/components/AllTagsCard";
 
 export default function Home() {
   const allPostsData = getSortedPostsData();
 
   return (
     <div className="bg-whit">
-      {/* Hero Section */}
-      <section className="relative h-[50vh] flex items-center justify-center overflow-hidden">
-        <HeroBackground />
-        <div className="relative z-10 text-center px-4">
-          <h1 className="text-4xl md:text-6xl font-thin tracking-widest text-neutral-800 mb-4 font-serif">
-            Thoughts & <br className="md:hidden" />
-            <span className="italic">Perspectives</span>
-          </h1>
-          <p className="text-neutral-500 text-sm md:text-base tracking-widest uppercase mt-4">
-            Exploring the unseen corners of the digital world
-          </p>
-        </div>
-      </section>
+      <Hero />
 
       {/* Blog Posts Section with TagsCard on desktop: center Latest Stories, tags on right */}
-      <section className="container mx-auto px-5 py-20">
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_minmax(0,720px)_260px] gap-8 items-start max-w-7xl mx-auto">
+      <section className="container mx-auto px-5 py-20 grid md:grid-cols-4 gap-6 relative">
+        <div className="hidden md:block md:sticky md:top-20 md:self-start">
+          <AllTagsCard />
+        </div>
+        <div className=" md:grid-cols-[1fr_minmax(0,720px)_260px] gap-8 items-start max-w-7xl mx-auto col-span-2">
           <div className="hidden md:block" />
           <div className="w-full mx-auto relative">
             <h2 className="text-2xl font-bold text-neutral-900 mb-10 border-b border-neutral-200 pb-4">
@@ -74,8 +65,8 @@ export default function Home() {
               ))}
             </div>
           </div>
-
-         
+        </div>
+        <div>
         </div>
       </section>
     </div>
