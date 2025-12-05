@@ -5,7 +5,7 @@ export const AllTagsCard = () => {
   const allTags = getAllTags();
 
   return (
-    <div className="p-6 m-4 border rounded-3xl border-gray-200 ">
+    <div className="bg-white/60 backdrop-blur-sm border border-neutral-200/50 rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow duration-300 sticky top-24">
       <h2 className="text-lg font-semibold text-neutral-900 col-span-2 mb-4">
         全てのタグ
       </h2>
