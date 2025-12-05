@@ -1,6 +1,7 @@
 import { getPostData, getAllPostSlugs } from "@/lib/posts";
 import TableOfContents from "@/components/TableOfContents";
 import Link from "next/link";
+import { Introduce } from "@/components/Introduce";
 
 export async function generateStaticParams() {
   const paths = getAllPostSlugs();
@@ -16,10 +17,10 @@ export default async function Post({
   const postData = await getPostData(slug);
 
   return (
-    <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-6 md:py-8 lg:py-12 mt-16 sm:mt-20 md:mt-24">
-      <div className="lg:grid lg:grid-cols-[1fr_280px] lg:gap-12 items-start">
+    <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-6 md:py-8 lg:py-12 mt-16 sm:mt-20 md:mt-24 ">
+      <div className="lg:grid lg:grid-cols-[1fr_380px] lg:gap-12">
         {/* Article Container */}
-        <article className="sm:bg-white/80 sm:backdrop-blur-sm sm:rounded-2xl sm:shadow-lg sm:border sm:border-neutral-200/50 p-0 sm:p-6 md:p-8 lg:p-12 sm:hover:shadow-xl sm:transition-shadow sm:duration-300">
+        <article className="sm:bg-white/80 sm:backdrop-blur-sm sm:rounded-2xl sm:shadow-lg sm:border sm:border-neutral-200/50 p-0 sm:p-6 md:p-8 lg:p-12 sm:hover:shadow-xl sm:transition-shadow sm:duration-300 relative">
           {/* Article Header */}
           <header className="mb-6 pb-6 sm:mb-8 sm:pb-8 border-b border-neutral-200">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-neutral-900 mb-4 leading-tight">
@@ -77,8 +78,12 @@ export default async function Post({
         </article>
 
         {/* Table of Contents Sidebar */}
-        <aside className="hidden lg:block sticky top-24">
-          <div className="bg-white/60 backdrop-blur-sm border border-neutral-200/50 rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow duration-300">
+
+        <aside className="hidden lg:block space-y-4">
+          <div className="">
+            <Introduce />
+          </div>
+          <div className="bg-white/60 backdrop-blur-sm border border-neutral-200/50 rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow duration-300 sticky top-24">
             {postData.toc && <TableOfContents toc={postData.toc} />}
           </div>
         </aside>

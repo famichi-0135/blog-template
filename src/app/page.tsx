@@ -1,6 +1,8 @@
 import { Hero } from "@/components/Hero";
 import { AllTagsCard } from "@/components/AllTagsCard";
 import { AllArticle } from "@/components/AllArticle";
+import Image from "next/image";
+import { Introduce } from "@/components/Introduce";
 
 export default function Home() {
   return (
@@ -23,7 +25,27 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div></div>
+        <div className="hidden md:block md:sticky md:top-20 md:self-start">
+          {/* <div className="p-4 m-4 border rounded-3xl border-gray-200">
+            <div className="flex space-x-2 items-center space-between">
+              <div className="w-20 h-20 flex-shrink-0 mr-4">
+                <Image
+                  src="/humberger.png"
+                  width={70}
+                  height={70}
+                  alt="ロゴ画像"
+                  className="w-full h-full object-cover rounded-full shadow-xl"
+                />
+              </div>
+
+              <div className="space-y-2  ">
+                <h3 className="font-bold text-xl">famichi</h3>
+                <p>時代に取り残されないよう日々、必死に生きてます。</p>
+              </div>
+            </div>
+          </div> */}
+          <Introduce />
+        </div>
       </section>
     </div>
   );
