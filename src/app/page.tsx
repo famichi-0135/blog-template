@@ -10,7 +10,7 @@ export default function Home() {
       <Hero />
 
       {/* Blog Posts Section with TagsCard on desktop: center Latest Stories, tags on right */}
-      <section className="container mx-auto px-5 py-20 grid md:grid-cols-4 gap-6 relative">
+      <section className="container mx-auto px-5 py-15 grid md:grid-cols-4 gap-6 relative">
         <div className="hidden md:block md:sticky md:top-20 md:self-start">
           <AllTagsCard />
         </div>

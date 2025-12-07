@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-// import { ViewTransition } from "react";
+import { ViewTransition } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,11 +32,11 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-scre`}
       >
         {" "}
-        {/* <ViewTransition> */}
+        <ViewTransition>
         <Header />
         <main className="flex-1 container mx-auto px-5 py-10">{children}</main>
         <Footer />
-        {/* </ViewTransition> */}
+        </ViewTransition>
       </body>
     </html>
   );
