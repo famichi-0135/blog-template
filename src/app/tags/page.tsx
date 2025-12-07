@@ -8,15 +8,15 @@ export default function TagsPage() {
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 mt-20 sm:mt-24">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl sm:text-5xl font-extrabold text-neutral-900 mb-4">
+        <h1 className="text-4xl sm:text-5xl font-extrabold text-neutral-900 mb-4 dark:text-neutral-100">
           全てのタグ
         </h1>
-        <p className="text-sm text-neutral-500 mb-6">
+        <p className="text-sm text-neutral-500 mb-6 dark:text-neutral-200">
           タグで記事を分類しています。気になるタグを選んでください。
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-4">
-          {tags.map((tag) => (
+          {/* {tags.map((tag) => (
             <Link
               key={tag}
               href={`/tags/${encodeURIComponent(tag)}`}
@@ -44,6 +44,27 @@ export default function TagsPage() {
                   {tagCounts?.[tag] ?? 0} 記事
                 </span>
               </div>
+            </Link>
+          ))} */}
+
+          {tags.map((tag) => (
+            <Link
+              key={tag}
+              href={`/tags/${encodeURIComponent(tag)}`}
+              className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-linear-to-r from-blue-50 to-purple-50 dark:from-blue-950 dark:to-purple-950 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800 hover:border-blue-300 dark:hover:border-blue-700 hover:shadow-md transition-all duration-200 py-4"
+            >
+              <svg
+                className="w-5 h-5 mr-1"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              {tag}
             </Link>
           ))}
         </div>
