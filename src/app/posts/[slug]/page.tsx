@@ -2,6 +2,7 @@ import { getPostData, getAllPostSlugs } from "@/lib/posts";
 import TableOfContents from "@/components/TableOfContents";
 import Link from "next/link";
 import { Introduce } from "@/components/Introduce";
+import { SortedArticle } from "@/components/SortedArticle";
 
 export async function generateStaticParams() {
   const paths = getAllPostSlugs();
@@ -50,7 +51,7 @@ export default async function Post({
                   <Link
                     key={tag}
                     href={`/tags/${encodeURIComponent(tag)}`}
-                    className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r from-blue-50 to-purple-50 text-blue-700 border border-blue-200 hover:border-blue-300 hover:shadow-md transition-all duration-200"
+                    className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-linear-to-r from-blue-50 to-purple-50 text-blue-700 border border-blue-200 hover:border-blue-300 hover:shadow-md transition-all duration-200"
                   >
                     <svg
                       className="w-3 h-3 mr-1"
@@ -87,6 +88,11 @@ export default async function Post({
             {postData.toc && <TableOfContents toc={postData.toc} />}
           </div>
         </aside>
+      </div>
+      <div className=" bg-white/60 backdrop-blur-sm border border-neutral-200/50 rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow duration-300 sticky top-24 mt-4 md:mt-12">
+        <h2 className="text-2xl font-bold">関連記事</h2>
+        {/* Related posts could be listed here based on tags or categories */}
+        <SortedArticle tags={postData.tags || []} slug={postData.slug} />
       </div>
     </div>
   );
