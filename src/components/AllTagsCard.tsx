@@ -5,8 +5,8 @@ export const AllTagsCard = () => {
   const allTags = getAllTags();
 
   return (
-    <div className="bg-white/60 backdrop-blur-sm border border-neutral-200/50 rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow duration-300 sticky top-24">
-      <h2 className="text-lg font-semibold text-neutral-900 col-span-2 mb-4">
+    <div className="rounded-2xl bg-white/60 dark:bg-neutral-800/60 backdrop-blur-sm border border-neutral-200/50 dark:border-neutral-700/50  shadow-md dark:shadow-black/50 p-6 hover:shadow-lg dark:hover:shadow-black/70 transition-shadow duration-300 sticky top-24">
+      <h2 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 col-span-2 mb-4">
         全てのタグ
       </h2>
 
@@ -16,7 +16,7 @@ export const AllTagsCard = () => {
             <Link
               key={tag}
               href={`/tags/${encodeURIComponent(tag)}`}
-              className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r from-blue-50 to-purple-50 text-blue-700 border border-blue-200 hover:border-blue-300 hover:shadow-md transition-all duration-200"
+              className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950 dark:to-purple-950 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800 hover:border-blue-300 dark:hover:border-blue-700 hover:shadow-md transition-all duration-200"
             >
               <svg
                 className="w-3 h-3 mr-1"

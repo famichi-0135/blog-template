@@ -8,10 +8,10 @@ export const AllArticle = () => {
       {allPostsData.map(({ slug, date, title, excerpt, tags }) => (
         <div
           key={slug}
-          className="group relative p-6 rounded-2xl transition-all duration-300 hover:bg-neutral-50 hover:shadow-lg border border-transparent hover:border-neutral-100"
+          className="group relative p-6 rounded-2xl transition-all duration-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 hover:shadow-lg dark:hover:shadow-black/50 border border-transparent hover:border-neutral-100 dark:hover:border-neutral-700"
         >
           <div className="flex flex-col md:flex-row md:items-baseline md:justify-between mb-2">
-            <h3 className="text-2xl font-bold text-neutral-900 group-hover:text-blue-600 transition-colors">
+            <h3 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
               <Link
                 href={`/posts/${slug}`}
                 className="before:absolute before:inset-0"
@@ -19,11 +19,13 @@ export const AllArticle = () => {
                 {title}
               </Link>
             </h3>
-            <small className="text-neutral-400 font-medium mt-1 md:mt-0">
+            <small className="text-neutral-400 dark:text-neutral-500 font-medium mt-1 md:mt-0">
               {date}
             </small>
           </div>
-          <p className="text-neutral-600 leading-relaxed mb-4">{excerpt}</p>
+          <p className="text-neutral-600 dark:text-neutral-300 leading-relaxed mb-4">
+            {excerpt}
+          </p>
 
           {/* タグ表示 */}
           {tags && tags.length > 0 && (
@@ -31,7 +33,7 @@ export const AllArticle = () => {
               {tags.map((tag) => (
                 <span
                   key={tag}
-                  className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r from-blue-50 to-purple-50 text-blue-700 border border-blue-200 hover:border-blue-300 hover:shadow-md transition-all duration-200"
+                  className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950 dark:to-purple-950 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800 hover:border-blue-300 dark:hover:border-blue-700 hover:shadow-md transition-all duration-200"
                 >
                   <svg
                     className="w-3 h-3 mr-1"

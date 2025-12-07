@@ -58,7 +58,7 @@ const TableOfContents = ({ toc }: TableOfContentsProps) => {
 
   return (
     <nav className="sticky top-24 max-h-[calc(100vh-16rem)] overflow-auto">
-      <h4 className="text-sm font-bold text-neutral-900 mb-4 uppercase tracking-wider">
+      <h4 className="text-sm font-bold text-neutral-900 dark:text-neutral-100 mb-4 uppercase tracking-wider">
         Table of Contents
       </h4>
       <ul className="space-y-2 text-sm">
@@ -72,8 +72,8 @@ const TableOfContents = ({ toc }: TableOfContentsProps) => {
               onClick={(e) => handleClick(e, item.id)}
               className={`block py-1 transition-colors duration-200 border-l-2 pl-3 ${
                 activeId === item.id
-                  ? "border-blue-600 text-blue-600 font-medium"
-                  : "border-transparent text-neutral-500 hover:text-neutral-900 hover:border-neutral-300"
+                  ? "border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 font-medium"
+                  : "border-transparent text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:border-neutral-300 dark:hover:border-neutral-600"
               }`}
             >
               {item.text}

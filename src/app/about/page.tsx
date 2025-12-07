@@ -5,25 +5,25 @@ export default function About() {
         <div className="max-w-4xl mx-auto">
           {/* Hero Section */}
           <div className="text-center mb-16">
-            <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-neutral-900 mb-6">
+            <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-neutral-900 dark:text-neutral-100 mb-6">
               About Me
             </h1>
-            <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
+            <p className="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
               Web開発とITに情熱を注ぐIT系専門学生
             </p>
           </div>
 
           {/* Introduction Section */}
           <section className="mb-16">
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-neutral-200/50 p-8 md:p-10 hover:shadow-xl transition-shadow duration-300">
+            <div className="bg-white/80 dark:bg-neutral-800/80 backdrop-blur-sm rounded-2xl shadow-lg dark:shadow-black/50 border border-neutral-200/50 dark:border-neutral-700/50 p-8 md:p-10 hover:shadow-xl dark:hover:shadow-black/70 transition-shadow duration-300">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-1 h-8 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full"></div>
-                <h2 className="text-3xl font-bold text-neutral-900 flex items-center gap-3">
+                <h2 className="text-3xl font-bold text-neutral-900 dark:text-neutral-100 flex items-center gap-3">
                   <span className="text-3xl">👋</span>
                   はじめまして
                 </h2>
               </div>
-              <p className="text-neutral-700 leading-relaxed text-lg">
+              <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed text-lg">
                 このブログを運営している開発者です。Web技術、プログラミング、そして日々の学びについて発信しています。
                 モダンな技術スタックを使って、美しく使いやすいWebアプリケーションを作ることに情熱を注いでいます。
               </p>
@@ -32,10 +32,10 @@ export default function About() {
 
           {/* Skills Section */}
           <section className="mb-16">
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-neutral-200/50 p-8 md:p-10 hover:shadow-xl transition-shadow duration-300">
+            <div className="bg-white/80 dark:bg-neutral-800/80 backdrop-blur-sm rounded-2xl shadow-lg dark:shadow-black/50 border border-neutral-200/50 dark:border-neutral-700/50 p-8 md:p-10 hover:shadow-xl dark:hover:shadow-black/70 transition-shadow duration-300">
               <div className="flex items-center gap-3 mb-8">
                 <div className="w-1 h-8 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full"></div>
-                <h2 className="text-3xl font-bold text-neutral-900 flex items-center gap-3">
+                <h2 className="text-3xl font-bold text-neutral-900 dark:text-neutral-100 flex items-center gap-3">
                   <span className="text-3xl">💻</span>
                   スキル
                 </h2>
@@ -43,9 +43,9 @@ export default function About() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Frontend Card */}
-                <div className="group relative bg-gradient-to-br from-blue-50 to-blue-100/50 rounded-xl p-6 border border-blue-200/50 hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+                <div className="group relative bg-gradient-to-br from-blue-50 to-blue-100/50 dark:from-blue-950 dark:to-blue-900/50 rounded-xl p-6 border border-blue-200/50 dark:border-blue-800/50 hover:shadow-md dark:hover:shadow-black/50 transition-all duration-300 hover:-translate-y-1">
                   <div className="absolute top-0 right-0 w-20 h-20 bg-blue-500/10 rounded-bl-full"></div>
-                  <h3 className="font-bold text-xl mb-4 text-neutral-900 flex items-center gap-2">
+                  <h3 className="font-bold text-xl mb-4 text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
                     <span className="text-2xl">🎨</span>
                     フロントエンド
                   </h3>
@@ -54,7 +54,7 @@ export default function About() {
                       (skill) => (
                         <li
                           key={skill}
-                          className="flex items-center gap-2 text-neutral-700"
+                          className="flex items-center gap-2 text-neutral-700 dark:text-neutral-300"
                         >
                           <span className="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
                           {skill}
@@ -65,9 +65,9 @@ export default function About() {
                 </div>
 
                 {/* Backend Card */}
-                <div className="group relative bg-gradient-to-br from-purple-50 to-purple-100/50 rounded-xl p-6 border border-purple-200/50 hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+                <div className="group relative bg-gradient-to-br from-purple-50 to-purple-100/50 dark:from-purple-950 dark:to-purple-900/50 rounded-xl p-6 border border-purple-200/50 dark:border-purple-800/50 hover:shadow-md dark:hover:shadow-black/50 transition-all duration-300 hover:-translate-y-1">
                   <div className="absolute top-0 right-0 w-20 h-20 bg-purple-500/10 rounded-bl-full"></div>
-                  <h3 className="font-bold text-xl mb-4 text-neutral-900 flex items-center gap-2">
+                  <h3 className="font-bold text-xl mb-4 text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
                     <span className="text-2xl">⚙️</span>
                     バックエンド
                   </h3>
@@ -75,7 +75,7 @@ export default function About() {
                     {["Node.js", "Python", "Database Design"].map((skill) => (
                       <li
                         key={skill}
-                        className="flex items-center gap-2 text-neutral-700"
+                        className="flex items-center gap-2 text-neutral-700 dark:text-neutral-300"
                       >
                         <span className="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>
                         {skill}
@@ -89,10 +89,10 @@ export default function About() {
 
           {/* Interests Section */}
           <section className="mb-16">
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-neutral-200/50 p-8 md:p-10 hover:shadow-xl transition-shadow duration-300">
+            <div className="bg-white/80 dark:bg-neutral-800/80 backdrop-blur-sm rounded-2xl shadow-lg dark:shadow-black/50 border border-neutral-200/50 dark:border-neutral-700/50 p-8 md:p-10 hover:shadow-xl dark:hover:shadow-black/70 transition-shadow duration-300">
               <div className="flex items-center gap-3 mb-8">
                 <div className="w-1 h-8 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full"></div>
-                <h2 className="text-3xl font-bold text-neutral-900 flex items-center gap-3">
+                <h2 className="text-3xl font-bold text-neutral-900 dark:text-neutral-100 flex items-center gap-3">
                   <span className="text-3xl">🎯</span>
                   興味のある分野
                 </h2>
@@ -107,10 +107,10 @@ export default function About() {
                 ].map((item) => (
                   <div
                     key={item.text}
-                    className="flex items-center gap-3 p-4 bg-gradient-to-r from-neutral-50 to-neutral-100/50 rounded-lg border border-neutral-200/50 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5"
+                    className="flex items-center gap-3 p-4 bg-gradient-to-r from-neutral-50 to-neutral-100/50 dark:from-neutral-900 dark:to-neutral-800/50 rounded-lg border border-neutral-200/50 dark:border-neutral-700/50 hover:shadow-md dark:hover:shadow-black/30 transition-all duration-300 hover:-translate-y-0.5"
                   >
                     <span className="text-2xl">{item.icon}</span>
-                    <span className="text-neutral-700 font-medium">
+                    <span className="text-neutral-700 dark:text-neutral-300 font-medium">
                       {item.text}
                     </span>
                   </div>
@@ -121,14 +121,14 @@ export default function About() {
 
           {/* Contact Section */}
           <section>
-            <div className="bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl shadow-lg p-8 md:p-10 text-white hover:shadow-xl transition-shadow duration-300">
+            <div className="bg-gradient-to-br from-blue-500 to-purple-600 dark:from-blue-600 dark:to-purple-700 rounded-2xl shadow-lg dark:shadow-black/70 p-8 md:p-10 text-white hover:shadow-xl dark:hover:shadow-black/80 transition-shadow duration-300">
               <div className="flex items-center gap-3 mb-6">
                 <h2 className="text-3xl font-bold flex items-center gap-3">
                   <span className="text-3xl">📫</span>
                   Contact
                 </h2>
               </div>
-              <p className="text-blue-50 leading-relaxed text-lg mb-6">
+              <p className="text-blue-50 dark:text-blue-100 leading-relaxed text-lg mb-6">
                 お仕事のご依頼やご質問は、お気軽にご連絡ください。
               </p>
               <a
