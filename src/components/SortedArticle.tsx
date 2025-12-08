@@ -14,6 +14,21 @@ export const SortedArticle = (params: { tags: string[]; slug: string }) => {
       post.slug !== params.slug
   );
 
+  // const uniquePosts = allPostsData.filter((post, index, self) => {
+  //   // タグ配列をソートして文字列化（これで比較可能になる）
+  //   const normalizedTags = post.tags?.slice().sort().join(",");
+
+  //   const firstIndex = self.findIndex((p) => {
+  //     const t = p.tags?.slice().sort().join(",");
+  //     return t === normalizedTags;
+  //   });
+
+  //   // ① 同じタグセットの最初の1件だけ残す
+  //   // ② 現在表示中の記事は除外
+  //   return index === firstIndex && post.slug !== params.slug;
+  // });
+
+
   if (uniquePosts.length === 0) {
     return (
       <div className="my-2 text-gray-600 dark:text-neutral-400">
