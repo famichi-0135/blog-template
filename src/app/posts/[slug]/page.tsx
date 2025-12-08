@@ -4,6 +4,29 @@ import Link from "next/link";
 import { Introduce } from "@/components/Introduce";
 import { SortedArticle } from "@/components/SortedArticle";
 
+import type { Metadata, ResolvingMetadata } from "next";
+type Props = {
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const slug = (await params).slug;
+
+  // fetch post information
+  const postData = await getPostData(slug);
+
+  return {
+    title: postData.title,
+    description: postData.excerpt,
+    keywords: postData.tags,
+    openGraph: {
+      images: "/public/humberger.png",
+      title: postData.title,
+    },
+  };
+}
+
 export async function generateStaticParams() {
   const paths = getAllPostSlugs();
   return paths.map((path) => path.params);
