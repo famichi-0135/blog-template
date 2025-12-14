@@ -3,6 +3,7 @@ import TableOfContents from "@/components/TableOfContents";
 import Link from "next/link";
 import { Introduce } from "@/components/Introduce";
 import { SortedArticle } from "@/components/SortedArticle";
+import MarkdownRenderer from "@/components/MarkdownRenderer";
 
 import type { Metadata, ResolvingMetadata } from "next";
 type Props = {
@@ -39,7 +40,7 @@ export default async function Post({
 }) {
   const { slug } = await params;
   const postData = await getPostData(slug);
-
+  // console.log(postData.code);
   return (
     <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-6 md:py-8 lg:py-12 mt-16 sm:mt-20 md:mt-24 ">
       <div className="lg:grid lg:grid-cols-[1fr_380px] lg:gap-12">
@@ -95,10 +96,7 @@ export default async function Post({
           </header>
 
           {/* Article Content */}
-          <div
-            className="prose prose-neutral lg:prose-lg max-w-none prose-headings:scroll-mt-24"
-            dangerouslySetInnerHTML={{ __html: postData.contentHtml || "" }}
-          />
+          <MarkdownRenderer contentHtml={postData.contentHtml || ""} />
         </article>
 
         {/* Table of Contents Sidebar */}

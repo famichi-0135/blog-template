@@ -12,11 +12,16 @@ import GithubSlugger from "github-slugger";
 
 const postsDirectory = path.join(process.cwd(), "posts");
 
-export interface TOCItem {
+export type TOCItem = {
   id: string;
   text: string;
   level: number;
-}
+};
+
+export type CodeItem = {
+  id: number;
+  text: string;
+};
 
 export interface PostData {
   slug: string;
@@ -27,6 +32,7 @@ export interface PostData {
   tags?: string[];
   contentHtml?: string;
   toc?: TOCItem[];
+  code?: CodeItem[];
 }
 
 export function getSortedPostsData(): PostData[] {
@@ -97,6 +103,7 @@ export async function getPostData(slug: string): Promise<PostData> {
   const $ = cheerio.load(contentHtml);
   const slugger = new GithubSlugger();
   const toc: TOCItem[] = [];
+  const code: CodeItem[] = [];
 
   $("h2, h3").each((_, element) => {
     const text = $(element).text();
@@ -110,6 +117,19 @@ export async function getPostData(slug: string): Promise<PostData> {
     toc.push({ id, text, level });
   });
 
+  // Wrap tables in a div for responsive scrolling
+  $("table").each((_, element) => {
+    $(element).wrap('<div class="table-wrapper"></div>');
+  });
+
+  $("pre > code").each((id, element) => {
+    const raw = $(element).text();
+    const text = raw.trim();
+    if (raw !== null) {
+      code.push({ id: id, text: text });
+    }
+  });
+
   const processedContentHtml = $("body").html() || contentHtml;
 
   // Combine the data with the id and contentHtml
@@ -117,6 +137,7 @@ export async function getPostData(slug: string): Promise<PostData> {
     slug,
     contentHtml: processedContentHtml,
     toc,
+    code,
     ...(matterResult.data as {
       title: string;
       date: string;
