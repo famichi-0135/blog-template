@@ -235,7 +235,7 @@ body {
 
 .dark .prose code {
   background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-  color: #f87171;
+  color: #ced3db;
   border-color: #334155;
 }
 .prose code {

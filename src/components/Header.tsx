@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { ModeToggle } from "./theme-button";
+import { is } from "@react-three/fiber/dist/declarations/src/core/utils";
 
 const Header = () => {
   const [isVisible, setIsVisible] = useState(true);
