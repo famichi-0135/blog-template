@@ -407,12 +407,38 @@ body {
    TABLE STYLES - GFM Tables
    ============================================ */
 
-.prose table {
-  width: 100%;
-  border-collapse: collapse;
+/* テーブルラッパー - 横スクロール対応 */
+.prose .table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   margin: 2rem 0;
   border-radius: 0.5rem;
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+}
+
+/* ラッパーのスクロールバーをカスタマイズ */
+.prose .table-wrapper::-webkit-scrollbar {
+  height: 8px;
+}
+
+.prose .table-wrapper::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
+.prose .table-wrapper::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.prose .table-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
 }
 
 .prose thead {
@@ -432,6 +458,7 @@ body {
   font-size: 0.875rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  white-space: nowrap; /* ヘッダーの折り返し防止 */
 }
 
 .dark .prose th {
@@ -470,73 +497,6 @@ body {
 
 .dark .prose tbody tr:hover {
   background-color: #1e3a8a;
-}
-
-/* モバイルでのみ横スクロールを有効化 (テーブルをブロックにして横スクロールしつつ列幅制御) */
-@media (max-width: 768px) {
-  .prose table {
-    display: block;
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    table-layout: fixed;
-  }
-
-  /* 各セルに最小幅を与え、最後の列は残りの幅を取る */
-  .prose th,
-  .prose td {
-    min-width: 8rem;
-    box-sizing: border-box;
-  }
-
-  .prose th:last-child,
-  .prose td:last-child {
-    width: 100%;
-  }
-
-  /* テーブルのスクロールバーをカスタマイズ */
-  .prose table::-webkit-scrollbar {
-    height: 8px;
-  }
-
-  .prose table::-webkit-scrollbar-track {
-    background: #f1f5f9;
-    border-radius: 4px;
-  }
-
-  .prose table::-webkit-scrollbar-thumb {
-    background: #cbd5e1;
-    border-radius: 4px;
-  }
-
-  .prose table::-webkit-scrollbar-thumb:hover {
-    background: #94a3b8;
-  }
-}
-
-/* デスクトップ向け: テーブル全体に角丸を効かせ、ヘッダーと最終行のセルに角丸を付与 */
-@media (min-width: 769px) {
-  .prose table {
-    border-radius: 0.75rem;
-    overflow: hidden;
-    border-collapse: separate;
-  }
-
-  .prose thead th:first-child {
-    border-top-left-radius: 0.75rem;
-  }
-
-  .prose thead th:last-child {
-    border-top-right-radius: 0.75rem;
-  }
-
-  .prose tbody tr:last-child td:first-child {
-    border-bottom-left-radius: 0.75rem;
-  }
-
-  .prose tbody tr:last-child td:last-child {
-    border-bottom-right-radius: 0.75rem;
-  }
 }
 
 /* ============================================

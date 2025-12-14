@@ -3,6 +3,7 @@ import TableOfContents from "@/components/TableOfContents";
 import Link from "next/link";
 import { Introduce } from "@/components/Introduce";
 import { SortedArticle } from "@/components/SortedArticle";
+import MarkdownRenderer from "@/components/MarkdownRenderer";
 
 import type { Metadata, ResolvingMetadata } from "next";
 type Props = {
@@ -95,10 +96,7 @@ export default async function Post({
           </header>
 
           {/* Article Content */}
-          <div
-            className="prose prose-neutral lg:prose-lg max-w-none prose-headings:scroll-mt-24"
-            dangerouslySetInnerHTML={{ __html: postData.contentHtml || "" }}
-          />
+          <MarkdownRenderer contentHtml={postData.contentHtml || ""} />
         </article>
 
         {/* Table of Contents Sidebar */}

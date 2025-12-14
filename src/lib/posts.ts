@@ -10,7 +10,6 @@ import rehypeStringify from "rehype-stringify";
 import * as cheerio from "cheerio";
 import GithubSlugger from "github-slugger";
 
-
 const postsDirectory = path.join(process.cwd(), "posts");
 
 export type TOCItem = {
@@ -116,6 +115,11 @@ export async function getPostData(slug: string): Promise<PostData> {
     const level = tagName === "h2" ? 2 : 3;
 
     toc.push({ id, text, level });
+  });
+
+  // Wrap tables in a div for responsive scrolling
+  $("table").each((_, element) => {
+    $(element).wrap('<div class="table-wrapper"></div>');
   });
 
   $("pre > code").each((id, element) => {
