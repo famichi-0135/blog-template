@@ -26,13 +26,15 @@ export default function MarkdownRenderer({
       // Make sure pre has relative positioning for absolute positioning of button
       if (getComputedStyle(pre).position === "static") {
         pre.style.position = "relative";
+        pre.style.display = "block";
       }
 
       // Create a container for the button
       const buttonContainer = document.createElement("div");
-      buttonContainer.className =
-        "copy-button-container absolute top-2 right-2";
+
       pre.appendChild(buttonContainer);
+      buttonContainer.className =
+        "copy-button-container absolute top-2 right-2 hover:scale-110 hover:animate-pulse transition-all duration-300";
 
       // Get the code text
       const code = pre.querySelector("code")?.innerText || pre.innerText;

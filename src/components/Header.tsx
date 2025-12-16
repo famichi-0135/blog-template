@@ -4,7 +4,9 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { ModeToggle } from "./theme-button";
-import { is } from "@react-three/fiber/dist/declarations/src/core/utils";
+import { Popover } from "@radix-ui/react-popover";
+import { Button } from "@/components/ui/button";
+import { PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 const Header = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -84,8 +86,44 @@ const Header = () => {
           </div>
 
           {/* Mobile Menu Button */}
-
-          <button
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button
+                variant="outline"
+                size="icon"
+                className="md:hidden ml-auto p-2 rounded-full hover:bg-white/60 dark:hover:bg-neutral-700/60 transition-all duration-200"
+                aria-label="Toggle menu"
+              ></Button>
+            </PopoverTrigger>
+            <PopoverContent
+              // side="bottom"
+              align="end"
+              side="left"
+              sideOffset={300}
+              alignOffset={-200}
+              className="md:hidden fixed w-80 bg-white/90 dark:bg-neutral-900/90 backdrop-blur-xl border border-white/20 dark:border-neutral-700/30 shadow-lg dark:shadow-black/50 rounded-2xl p-4 mx-auto max-w-md"
+            >
+              <ul className="space-y-2">
+                {navLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      target={link.external ? "_blank" : undefined}
+                      rel={link.external ? "noopener noreferrer" : undefined}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="block px-4 py-3 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-900 dark:text-neutral-100 font-medium transition-all duration-200"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+                <div className="ml-4">
+                  <ModeToggle />
+                </div>
+              </ul>
+            </PopoverContent>
+          </Popover>
+          {/* <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="md:hidden ml-auto p-2 rounded-full hover:bg-white/60 dark:hover:bg-neutral-700/60 transition-all duration-200"
             aria-label="Toggle menu"
@@ -105,12 +143,11 @@ const Header = () => {
                 <path d="M4 6h16M4 12h16M4 18h16" />
               )}
             </svg>
-          </button>
+          </button> */}
         </nav>
       </div>
-
       {/* Mobile Menu Dropdown */}
-      {isMobileMenuOpen && (
+      {/* {isMobileMenuOpen && (
         <div className="md:hidden fixed top-24 left-0 right-0 px-5 animate-in fade-in slide-in-from-top-2 duration-200">
           <div className="bg-white/90 dark:bg-neutral-900/90 backdrop-blur-xl border border-white/20 dark:border-neutral-700/30 shadow-lg dark:shadow-black/50 rounded-2xl p-4 mx-auto max-w-md">
             <ul className="space-y-2">
@@ -133,7 +170,7 @@ const Header = () => {
             </ul>
           </div>
         </div>
-      )}
+      )} */}
     </header>
   );
 };
