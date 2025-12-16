@@ -6,6 +6,7 @@ import { SortedArticle } from "@/components/SortedArticle";
 import MarkdownRenderer from "@/components/MarkdownRenderer";
 
 import type { Metadata, ResolvingMetadata } from "next";
+import { Suspense } from "react";
 type Props = {
   params: Promise<{ slug: string }>;
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -96,15 +97,15 @@ export default async function Post({
           </header>
 
           {/* Article Content */}
+
           <MarkdownRenderer contentHtml={postData.contentHtml || ""} />
         </article>
 
         {/* Table of Contents Sidebar */}
 
         <aside className="hidden lg:block space-y-4">
-          <div className="">
-            <Introduce />
-          </div>
+          <Introduce />
+
           <div className="rounded-2xl  bg-white/60 dark:bg-neutral-800/60 backdrop-blur-sm border border-neutral-200/50 dark:border-neutral-700/50 shadow-md dark:shadow-black/50 p-6 hover:shadow-lg dark:hover:shadow-black/70 transition-shadow duration-300 sticky top-24">
             {postData.toc && <TableOfContents toc={postData.toc} />}
           </div>
@@ -113,6 +114,7 @@ export default async function Post({
       <div className="rounded-2xl bg-white/60 dark:bg-neutral-800/60 backdrop-blur-sm border border-neutral-200/50 dark:border-neutral-700/50 shadow-md dark:shadow-black/50 p-6 hover:shadow-lg dark:hover:shadow-black/70 transition-shadow duration-300 sticky top-24 mt-4 md:mt-12">
         <h2 className="text-2xl font-bold dark:text-neutral-100">関連記事</h2>
         {/* Related posts could be listed here based on tags or categories */}
+
         <SortedArticle tags={postData.tags || []} slug={postData.slug} />
       </div>
     </div>

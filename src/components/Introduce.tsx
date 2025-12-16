@@ -4,7 +4,7 @@ import Link from "next/link";
 export const Introduce = () => {
   return (
     <div className="rounded-2xl bg-white/60 dark:bg-neutral-800/60 backdrop-blur-sm border border-neutral-200/50 dark:border-neutral-700/50 shadow-md dark:shadow-black/50 p-6 hover:shadow-lg dark:hover:shadow-black/70 transition-shadow duration-300 space-y-4">
-      <div className="flex space-x-2 items-center space-between">
+      <div className="flex space-x-2 items-center space-between flex-wrap space-y-2">
         <div className="w-20 h-20 flex-shrink-0 mr-4">
           <Image
             src="/humberger.png"
