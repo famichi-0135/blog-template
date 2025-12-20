@@ -1,4 +1,5 @@
 import { getPostsByTag } from "@/lib/posts";
+import { randomUUID } from "crypto";
 import Link from "next/link";
 
 export const SortedArticle = (params: { tags: string[]; slug: string }) => {
@@ -28,7 +29,6 @@ export const SortedArticle = (params: { tags: string[]; slug: string }) => {
   //   return index === firstIndex && post.slug !== params.slug;
   // });
 
-
   if (uniquePosts.length === 0) {
     return (
       <div className="my-2 text-gray-600 dark:text-neutral-400">
@@ -38,9 +38,9 @@ export const SortedArticle = (params: { tags: string[]; slug: string }) => {
   } else {
     return (
       <div className="space-y-4 mt-4">
-        {uniquePosts.map(({ slug, date, title, excerpt, tags }) => (
+        {uniquePosts.slice(0, 5).map(({ slug, date, title, excerpt, tags }) => (
           <div
-            key={slug}
+            key={randomUUID()}
             className="group relative p-6 rounded-2xl transition-all duration-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 hover:shadow-lg dark:hover:shadow-black/50 border border-transparent hover:border-neutral-100 dark:hover:border-neutral-700"
           >
             <div className="flex flex-col md:flex-row md:items-baseline md:justify-between mb-2">
@@ -65,7 +65,7 @@ export const SortedArticle = (params: { tags: string[]; slug: string }) => {
               <div className="flex flex-wrap gap-2 mb-3">
                 {tags.map((tag) => (
                   <span
-                    key={tag}
+                    key={randomUUID()}
                     className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950 dark:to-purple-950 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800 hover:border-blue-300 dark:hover:border-blue-700 hover:shadow-md transition-all duration-200"
                   >
                     <svg

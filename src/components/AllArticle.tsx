@@ -1,8 +1,27 @@
-import { getSortedPostsData } from "@/lib/posts";
+import { get10ArticlesByPage, getSortedPostsData } from "@/lib/posts";
 import Link from "next/link";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "./ui/pagination";
+import { randomUUID } from "crypto";
 
-export const AllArticle = () => {
-  const allPostsData = getSortedPostsData();
+export const AllArticle = async (params: {
+  page_nation: number;
+  all_nation: number;
+}) => {
+  const { page_nation, all_nation } = await params;
+  const allPostsData = get10ArticlesByPage(page_nation);
+
+  const page_nation_link = [];
+  for (let i = 1; i <= all_nation / 10 + 1; i++) {
+    page_nation_link.push(`/allposts/${i}`);
+  }
   return (
     <>
       {allPostsData.map(({ slug, date, title, excerpt, tags }) => (
@@ -32,8 +51,8 @@ export const AllArticle = () => {
             <div className="flex flex-wrap gap-2 mb-3">
               {tags.map((tag) => (
                 <span
-                  key={tag}
-                  className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950 dark:to-purple-950 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800 hover:border-blue-300 dark:hover:border-blue-700 hover:shadow-md transition-all duration-200"
+                  key={randomUUID()}
+                  className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-linear-to-r from-blue-50 to-purple-50 dark:from-blue-950 dark:to-purple-950 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800 hover:border-blue-300 dark:hover:border-blue-700 hover:shadow-md transition-all duration-200"
                 >
                   <svg
                     className="w-3 h-3 mr-1"
@@ -51,21 +70,74 @@ export const AllArticle = () => {
               ))}
             </div>
           )}
-
-          <span className="text-blue-600 text-sm font-medium group-hover:underline">
-            Read more &rarr;
-          </span>
         </div>
       ))}
-      {allPostsData.length >= 10 ? (
-        <div>
-          <Link href="./posts" className="">
-            All Article
-          </Link>
-        </div>
-      ) : (
-        <div></div>
-      )}
+      <div className="hidden sm:block">
+        <Pagination>
+          <PaginationContent className="">
+            <PaginationItem>
+              {Number(page_nation - 1) >= 1 ? (
+                <PaginationPrevious
+                  href={`/allposts/${Number(page_nation) - 1}`}
+                  className=""
+                />
+              ) : (
+                <PaginationPrevious
+                  href="#"
+                  className="text-gray-300 dark:text-neutral-100 "
+                />
+              )}
+            </PaginationItem>
+            {page_nation_link.map((link, i) =>
+              Number(page_nation) === i + 1 ? (
+                <PaginationItem key={link}>
+                  <PaginationLink href={link} isActive>
+                    {i + 1}
+                  </PaginationLink>
+                </PaginationItem>
+              ) : (
+                <PaginationItem key={link}>
+                  <PaginationLink href={link}>{i + 1}</PaginationLink>
+                </PaginationItem>
+              )
+            )}
+            <PaginationItem>
+              {Number(page_nation + 1) <= all_nation ? (
+                <PaginationNext href={`/allposts/${Number(page_nation) + 1}`} />
+              ) : (
+                <PaginationNext href="#" className="text-gray-300" />
+              )}
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
+      </div>
+      <div className="sm:hidden">
+        <Pagination>
+          <PaginationContent>
+            <PaginationItem>
+              {Number(page_nation - 1) >= 1 ? (
+                <PaginationPrevious
+                  href={`/allposts/${Number(page_nation) - 1}`}
+                />
+              ) : (
+                <PaginationPrevious href="#" className="text-gray-300" />
+              )}
+            </PaginationItem>
+            <div>
+              <p>
+                {page_nation} / {Math.trunc(all_nation / 10 + 1)}
+              </p>
+            </div>
+            <PaginationItem>
+              {Number(page_nation + 1) <= all_nation ? (
+                <PaginationNext href={`/allposts/${Number(page_nation) + 1}`} />
+              ) : (
+                <PaginationNext href="#" className="text-gray-300" />
+              )}
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
+      </div>
     </>
   );
 };
