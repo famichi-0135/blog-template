@@ -29,7 +29,6 @@ export const SortedArticle = (params: { tags: string[]; slug: string }) => {
   //   return index === firstIndex && post.slug !== params.slug;
   // });
 
-
   if (uniquePosts.length === 0) {
     return (
       <div className="my-2 text-gray-600 dark:text-neutral-400">
@@ -39,7 +38,7 @@ export const SortedArticle = (params: { tags: string[]; slug: string }) => {
   } else {
     return (
       <div className="space-y-4 mt-4">
-        {uniquePosts.map(({ slug, date, title, excerpt, tags }) => (
+        {uniquePosts.slice(0, 5).map(({ slug, date, title, excerpt, tags }) => (
           <div
             key={randomUUID()}
             className="group relative p-6 rounded-2xl transition-all duration-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 hover:shadow-lg dark:hover:shadow-black/50 border border-transparent hover:border-neutral-100 dark:hover:border-neutral-700"
