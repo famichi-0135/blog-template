@@ -44,8 +44,8 @@ export default async function Post({
   const postData = await getPostData(slug);
   // console.log(postData.code);
   return (
-    <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-6 md:py-8 lg:py-12 mt-16 sm:mt-20 md:mt-24 ">
-      <div className="lg:grid lg:grid-cols-[1fr_380px] lg:gap-12">
+    <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-4 py-4 sm:py-6 md:py-8 lg:py-12 mt-16 sm:mt-20 md:mt-24 ">
+      <div className="lg:grid lg:grid-cols-[1fr_25%] lg:gap-12">
         {/* Article Container */}
         <article className="sm:bg-white/80 dark:sm:bg-neutral-800/80 sm:backdrop-blur-sm sm:rounded-2xl sm:shadow-lg dark:sm:shadow-black/50 sm:border sm:border-neutral-200/50 dark:sm:border-neutral-700/50 p-0 sm:p-6 md:p-8 lg:p-12 sm:hover:shadow-xl dark:sm:hover:shadow-black/70 sm:transition-shadow sm:duration-300 relative">
           {/* Article Header */}
@@ -112,7 +112,7 @@ export default async function Post({
           </div>
         </aside>
       </div>
-      <div className="rounded-2xl bg-white/60 dark:bg-neutral-800/60 backdrop-blur-sm border border-neutral-200/50 dark:border-neutral-700/50 shadow-md dark:shadow-black/50 p-6 hover:shadow-lg dark:hover:shadow-black/70 transition-shadow duration-300 sticky top-24 mt-4 md:mt-12">
+      <div className=" rounded-2xl bg-white/60 dark:bg-neutral-800/60 backdrop-blur-sm border border-neutral-200/50 dark:border-neutral-700/50 shadow-md dark:shadow-black/50 p-6 hover:shadow-lg dark:hover:shadow-black/70 transition-shadow duration-300 sticky top-24 mt-4 md:mt-12">
         <h2 className="text-2xl font-bold dark:text-neutral-100">関連記事</h2>
         {/* Related posts could be listed here based on tags or categories */}
 
