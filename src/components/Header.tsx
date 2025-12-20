@@ -32,7 +32,7 @@ const Header = () => {
   }, [lastScrollY]);
 
   const navLinks = [
-    { href: "/posts", label: "Article" },
+    { href: "/allposts/1", label: "Article" },
     { href: "/tags", label: "Tags" },
     { href: "/about", label: "About" },
     {
@@ -86,24 +86,49 @@ const Header = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <Popover>
+          <Popover
+            onOpenChange={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            open={isMobileMenuOpen}
+          >
             <PopoverTrigger asChild>
-              <Button
+              {/* <Button
                 variant="outline"
                 size="icon"
                 className="md:hidden ml-auto p-2 rounded-full hover:bg-white/60 dark:hover:bg-neutral-700/60 transition-all duration-200"
                 aria-label="Toggle menu"
-              ></Button>
+              ></Button> */}
+              <Button
+                className="md:hidden ml-auto p-2 rounded-md dark:bg-neutral-800 dark:border-neutral-700 hover:bg-white/60 dark:hover:bg-neutral-700/60 transition-all duration-200"
+                aria-label="Toggle menu"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                variant={"ghost"}
+                size={"icon"}
+              >
+                <svg
+                  className="w-6 h-6 text-neutral-900 dark:text-neutral-100"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  {isMobileMenuOpen ? (
+                    <path d="M6 18L18 6M6 6l12 12" />
+                  ) : (
+                    <path d="M4 6h16M4 12h16M4 18h16" />
+                  )}
+                </svg>
+              </Button>
             </PopoverTrigger>
             <PopoverContent
-              // side="bottom"
               align="end"
               side="left"
-              sideOffset={300}
-              alignOffset={-200}
-              className="md:hidden fixed w-80 bg-white/90 dark:bg-neutral-900/90 backdrop-blur-xl border border-white/20 dark:border-neutral-700/30 shadow-lg dark:shadow-black/50 rounded-2xl p-4 mx-auto max-w-md"
+              sideOffset={120}
+              alignOffset={0}
+              className="md:hidden fixed w-40 mt-6 bg-white/90 dark:bg-neutral-900/90 backdrop-blur-xl border border-white/20 dark:border-neutral-700/30 shadow-lg dark:shadow-black/50 rounded-2xl p-4 mx-auto max-w-md"
             >
-              <ul className="space-y-2">
+              <ul className="">
                 {navLinks.map((link) => (
                   <li key={link.href}>
                     <Link
@@ -111,7 +136,7 @@ const Header = () => {
                       target={link.external ? "_blank" : undefined}
                       rel={link.external ? "noopener noreferrer" : undefined}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="block px-4 py-3 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-900 dark:text-neutral-100 font-medium transition-all duration-200"
+                      className="block px-4 py-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-900 dark:text-neutral-100 font-medium transition-all duration-200"
                     >
                       {link.label}
                     </Link>

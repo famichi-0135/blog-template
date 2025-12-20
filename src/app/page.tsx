@@ -3,6 +3,7 @@ import { AllTagsCard } from "@/components/AllTagsCard";
 import { AllArticle } from "@/components/AllArticle";
 import Image from "next/image";
 import { Introduce } from "@/components/Introduce";
+import { FirstFiveArticle } from "@/components/firstFiveArticle";
 
 export default function Home() {
   return (
@@ -21,7 +22,7 @@ export default function Home() {
               Latest Stories
             </h2>
             <div className="grid gap-10">
-              <AllArticle />
+              <FirstFiveArticle />
             </div>
           </div>
         </div>

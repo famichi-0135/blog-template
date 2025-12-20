@@ -71,6 +71,13 @@ export function getSortedPostsData(): PostData[] {
   });
 }
 
+export function get10ArticlesByPage(page: number): PostData[] {
+  const allPosts = getSortedPostsData();
+  const startIndex = ((page - 1) * 10);
+  const endIndex = startIndex + 9;
+  return allPosts.slice(startIndex, endIndex);
+}
+
 export function getAllPostSlugs() {
   const fileNames = fs.readdirSync(postsDirectory);
   return fileNames.map((fileName) => {

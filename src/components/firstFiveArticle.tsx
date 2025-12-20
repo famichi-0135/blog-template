@@ -1,31 +1,14 @@
-import { get10ArticlesByPage, getSortedPostsData } from "@/lib/posts";
-import Link from "next/link";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "./ui/pagination";
+import { get10ArticlesByPage } from "@/lib/posts";
 import { randomUUID } from "crypto";
+import Link from "next/link";
 
-export const AllArticle = (params: {
-  page_nation: number;
-  all_nation: number;
-}) => {
-  const allPostsData = get10ArticlesByPage(params.page_nation);
-
-  const page_nation_link = [];
-  for (let i = 1; i <= (params.all_nation / 10) + 1; i++) {
-    page_nation_link.push(`/allposts/${i}`);
-  }
+export const FirstFiveArticle = () => {
+  const allPostsData = get10ArticlesByPage(1);
   return (
     <>
       {allPostsData.map(({ slug, date, title, excerpt, tags }) => (
         <div
-          key={slug}
+          key={randomUUID()}
           className="group relative p-6 rounded-2xl transition-all duration-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 hover:shadow-lg dark:hover:shadow-black/50 border border-transparent hover:border-neutral-100 dark:hover:border-neutral-700"
         >
           <div className="flex flex-col md:flex-row md:items-baseline md:justify-between mb-2">
@@ -71,33 +54,9 @@ export const AllArticle = (params: {
           )}
         </div>
       ))}
-      <Pagination>
-        <PaginationContent>
-          {page_nation_link.map((link, i) => (
-            <PaginationItem key={link}>
-              <PaginationLink href={link}>{i+1}</PaginationLink>
-            </PaginationItem>
-          ))}
-          {/*
-          <PaginationItem>
-            <PaginationLink href="#" isActive>
-              1
-            </PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink href="#">2</PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink href="#">3</PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationEllipsis />
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationNext href="#" />
-          </PaginationItem> */}
-        </PaginationContent>
-      </Pagination>
+      <Link href="./allposts/1" className="text-end transition hover:font-bold">
+        All Article
+      </Link>
     </>
   );
 };

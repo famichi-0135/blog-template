@@ -5,8 +5,9 @@ import { Introduce } from "@/components/Introduce";
 import { SortedArticle } from "@/components/SortedArticle";
 import MarkdownRenderer from "@/components/MarkdownRenderer";
 
-import type { Metadata, ResolvingMetadata } from "next";
-import { Suspense } from "react";
+import type { Metadata } from "next";
+// import { Suspense } from "react";
+import { randomUUID } from "crypto";
 type Props = {
   params: Promise<{ slug: string }>;
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -74,9 +75,9 @@ export default async function Post({
               <div className="flex flex-wrap gap-2">
                 {postData.tags.map((tag) => (
                   <Link
-                    key={tag}
+                    key={randomUUID()}
                     href={`/tags/${encodeURIComponent(tag)}`}
-                    className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950 dark:to-purple-950 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800 hover:border-blue-300 dark:hover:border-blue-700 hover:shadow-md transition-all duration-200"
+                    className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-linear-to-r from-blue-50 to-purple-50 dark:from-blue-950 dark:to-purple-950 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800 hover:border-blue-300 dark:hover:border-blue-700 hover:shadow-md transition-all duration-200"
                   >
                     <svg
                       className="w-3 h-3 mr-1"
