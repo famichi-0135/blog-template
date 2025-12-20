@@ -43,7 +43,7 @@ export default function RootLayout({
         >
           <ViewTransition>
             <Header />
-            <main className="flex-1 container mx-auto px-5 py-10">
+            <main className="flex-1 container mx-auto px-2 py-10">
               {children}
             </main>
             <Footer />

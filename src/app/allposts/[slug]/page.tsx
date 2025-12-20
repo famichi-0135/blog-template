@@ -1,11 +1,11 @@
 import { AllArticle } from "@/components/AllArticle";
-import { getAllPostSlugs } from "@/lib/posts";
+import { getArticleCount } from "@/lib/posts";
 
 export const metadata = {
   title: "Articles",
   description: "List of articles",
 };
-const page_nation = getAllPostSlugs().length;
+const page_nation = getArticleCount();
 export async function generateStaticParams() {
   const ar = [];
   for (let i = 1; i <= page_nation / 10 + 1; i++) {

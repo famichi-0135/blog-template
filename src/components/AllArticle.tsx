@@ -11,14 +11,15 @@ import {
 } from "./ui/pagination";
 import { randomUUID } from "crypto";
 
-export const AllArticle = (params: {
+export const AllArticle = async (params: {
   page_nation: number;
   all_nation: number;
 }) => {
-  const allPostsData = get10ArticlesByPage(params.page_nation);
+  const { page_nation, all_nation } = await params;
+  const allPostsData = get10ArticlesByPage(page_nation);
 
   const page_nation_link = [];
-  for (let i = 1; i <= (params.all_nation / 10) + 1; i++) {
+  for (let i = 1; i <= all_nation / 10 + 1; i++) {
     page_nation_link.push(`/allposts/${i}`);
   }
   return (
@@ -71,33 +72,72 @@ export const AllArticle = (params: {
           )}
         </div>
       ))}
-      <Pagination>
-        <PaginationContent>
-          {page_nation_link.map((link, i) => (
-            <PaginationItem key={link}>
-              <PaginationLink href={link}>{i+1}</PaginationLink>
+      <div className="hidden sm:block">
+        <Pagination>
+          <PaginationContent className="">
+            <PaginationItem>
+              {Number(page_nation - 1) >= 1 ? (
+                <PaginationPrevious
+                  href={`/allposts/${Number(page_nation) - 1}`}
+                  className=""
+                />
+              ) : (
+                <PaginationPrevious
+                  href="#"
+                  className="text-gray-300 dark:text-neutral-100 "
+                />
+              )}
             </PaginationItem>
-          ))}
-          {/*
-          <PaginationItem>
-            <PaginationLink href="#" isActive>
-              1
-            </PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink href="#">2</PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink href="#">3</PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationEllipsis />
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationNext href="#" />
-          </PaginationItem> */}
-        </PaginationContent>
-      </Pagination>
+            {page_nation_link.map((link, i) =>
+              Number(page_nation) === i + 1 ? (
+                <PaginationItem key={link}>
+                  <PaginationLink href={link} isActive>
+                    {i + 1}
+                  </PaginationLink>
+                </PaginationItem>
+              ) : (
+                <PaginationItem key={link}>
+                  <PaginationLink href={link}>{i + 1}</PaginationLink>
+                </PaginationItem>
+              )
+            )}
+            <PaginationItem>
+              {Number(page_nation + 1) <= all_nation ? (
+                <PaginationNext href={`/allposts/${Number(page_nation) + 1}`} />
+              ) : (
+                <PaginationNext href="#" className="text-gray-300" />
+              )}
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
+      </div>
+      <div className="sm:hidden">
+        <Pagination>
+          <PaginationContent>
+            <PaginationItem>
+              {Number(page_nation - 1) >= 1 ? (
+                <PaginationPrevious
+                  href={`/allposts/${Number(page_nation) - 1}`}
+                />
+              ) : (
+                <PaginationPrevious href="#" className="text-gray-300" />
+              )}
+            </PaginationItem>
+            <div>
+              <p>
+                {page_nation} / {Math.trunc(all_nation / 10 + 1)}
+              </p>
+            </div>
+            <PaginationItem>
+              {Number(page_nation + 1) <= all_nation ? (
+                <PaginationNext href={`/allposts/${Number(page_nation) + 1}`} />
+              ) : (
+                <PaginationNext href="#" className="text-gray-300" />
+              )}
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
+      </div>
     </>
   );
 };

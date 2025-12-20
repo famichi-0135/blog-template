@@ -71,9 +71,18 @@ export function getSortedPostsData(): PostData[] {
   });
 }
 
+export function getArticleCount(): number {
+  const fileNames = fs.readdirSync(postsDirectory);
+  const post = fileNames.map((fileName) => {
+    const slug = fileName.replace(/\.md$/, "");
+    return slug;
+  });
+  return post.length;
+}
+
 export function get10ArticlesByPage(page: number): PostData[] {
   const allPosts = getSortedPostsData();
-  const startIndex = ((page - 1) * 10);
+  const startIndex = (page - 1) * 10;
   const endIndex = startIndex + 9;
   return allPosts.slice(startIndex, endIndex);
 }
@@ -176,7 +185,10 @@ export function getAllTags(): string[] {
  */
 export function getPostsByTag(tag: string): PostData[] {
   const allPosts = getSortedPostsData();
-  return allPosts.filter((post) => post.tags && post.tags.includes(tag));
+  const relationPosts = allPosts.filter(
+    (post) => post.tags && post.tags.includes(tag)
+  );
+  return relationPosts.slice(0, 5);
 }
 
 /**
