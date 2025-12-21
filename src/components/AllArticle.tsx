@@ -74,38 +74,38 @@ export const AllArticle = async (params: {
       ))}
       <div className="hidden sm:block">
         <Pagination>
-          <PaginationContent className="">
+          <PaginationContent>
             <PaginationItem>
               {Number(page_nation - 1) >= 1 ? (
                 <PaginationPrevious
                   href={`/allposts/${Number(page_nation) - 1}`}
-                  className=""
+                  className="dark:text-neutral-300"
                 />
               ) : (
                 <PaginationPrevious
                   href="#"
-                  className="text-gray-300 dark:text-neutral-100 "
+                  className="text-gray-300 dark:text-neutral-700"
                 />
               )}
             </PaginationItem>
             {page_nation_link.map((link, i) =>
               Number(page_nation) === i + 1 ? (
-                <PaginationItem key={link}>
-                  <PaginationLink href={link} isActive>
+                <PaginationItem key={link} >
+                  <PaginationLink href={link} isActive className="dark:bg-neutral-600 dark:border-neutral-400 text-neutral-400">
                     {i + 1}
                   </PaginationLink>
                 </PaginationItem>
               ) : (
                 <PaginationItem key={link}>
-                  <PaginationLink href={link}>{i + 1}</PaginationLink>
+                  <PaginationLink href={link} className="border dark:bg-neutral-800 dark:border-neutral-600 text-neutral-400">{i + 1}</PaginationLink>
                 </PaginationItem>
               )
             )}
             <PaginationItem>
               {Number(page_nation + 1) <= all_nation ? (
-                <PaginationNext href={`/allposts/${Number(page_nation) + 1}`} />
+                <PaginationNext href={`/allposts/${Number(page_nation) + 1}`} className="dark:text-neutral-400 dark:border-neutral-300 " />
               ) : (
-                <PaginationNext href="#" className="text-gray-300" />
+                <PaginationNext href="#" className="text-gray-300 dark:text-neutral-700" />
               )}
             </PaginationItem>
           </PaginationContent>
@@ -118,21 +118,23 @@ export const AllArticle = async (params: {
               {Number(page_nation - 1) >= 1 ? (
                 <PaginationPrevious
                   href={`/allposts/${Number(page_nation) - 1}`}
+                  className="text-neutral-700 dark:text-neutral-300"
                 />
               ) : (
-                <PaginationPrevious href="#" className="text-gray-300" />
+                <PaginationPrevious href="#" className="text-neutral-300 dark:text-gray-700" />
               )}
             </PaginationItem>
             <div>
-              <p>
+              <p className="dark:text-neutral-300">
                 {page_nation} / {Math.trunc(all_nation / 10 + 1)}
               </p>
             </div>
             <PaginationItem>
               {Number(page_nation + 1) <= all_nation ? (
-                <PaginationNext href={`/allposts/${Number(page_nation) + 1}`} />
+                <PaginationNext href={`/allposts/${Number(page_nation) + 1}`}
+                  className="text-neutral-700 dark:text-neutral-300" />
               ) : (
-                <PaginationNext href="#" className="text-gray-300" />
+                <PaginationNext href="#" className="text-neutral-300 dark:text-neutral-700" />
               )}
             </PaginationItem>
           </PaginationContent>
