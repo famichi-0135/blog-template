@@ -91,7 +91,7 @@ export const AllArticle = async (params: {
             {page_nation_link.map((link, i) =>
               Number(page_nation) === i + 1 ? (
                 <PaginationItem key={link} >
-                  <PaginationLink href={link} isActive className="dark:bg-neutral-600 dark:border-neutral-400 text-neutral-400">
+                  <PaginationLink href={link} isActive className="bg-neutral-200 border-neutral-300 dark:bg-neutral-600 dark:border-neutral-400 dark:text-neutral-400">
                     {i + 1}
                   </PaginationLink>
                 </PaginationItem>
