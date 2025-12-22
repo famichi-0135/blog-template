@@ -7,13 +7,15 @@ const Footer = () => {
         </div>
         <div className="flex items-center space-x-4 mt-4 md:mt-0">
           <a
-            href="#"
+            href="https://x.com/famichi0135"
+            target="_blank"
             className="text-neutral-500 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200 transition-colors"
           >
             Twitter
           </a>
           <a
-            href="#"
+            href="https://github.com/famichi-0135"
+            target="_blank"
             className="text-neutral-500 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200 transition-colors"
           >
             GitHub

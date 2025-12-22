@@ -23,7 +23,7 @@ export default async function PostsPage({
   console.log(slug);
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 mt-20 sm:mt-24">
-      <h1 className="text-3xl font-bold mb-4 dark:text-neutral-100">
+      <h1 className="text-5xl md:text-6xl font-bold mb-4 dark:text-neutral-100 text-center">
         Articles
       </h1>
       <div className="space-y-4">

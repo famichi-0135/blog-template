@@ -25,7 +25,7 @@ export default function About() {
               </div>
               <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed text-lg">
                 このブログを運営している開発者です。Web技術、プログラミング、そして日々の学びについて発信しています。
-                モダンな技術スタックを使って、美しく使いやすいWebアプリケーションを作ることに情熱を注いでいます。
+                色々な技術に興味があるためこのブログに日々の学びを書き殴っていきます。
               </p>
             </div>
           </section>
@@ -134,7 +134,7 @@ export default function About() {
                 </h2>
               </div>
               <p className="text-blue-50 dark:text-blue-100 leading-relaxed text-lg mb-6">
-                お仕事のご依頼やご質問は、お気軽にご連絡ください。
+                28卒です。面接のお誘い待ってます。
               </p>
               <a
                 href="https://github.com"
