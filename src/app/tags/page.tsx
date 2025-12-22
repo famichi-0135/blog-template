@@ -8,10 +8,10 @@ export default function TagsPage() {
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 mt-20 sm:mt-24">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl sm:text-5xl font-extrabold text-neutral-900 mb-4 dark:text-neutral-100">
-          全てのタグ
+        <h1 className="text-5xl md:text-6xl text-center sm:text-5xl font-extrabold text-neutral-900 mb-6 dark:text-neutral-100 ">
+          All Tags
         </h1>
-        <p className="text-sm text-neutral-500 mb-6 dark:text-neutral-200">
+        <p className="text-lg text-neutral-500 mb-6 dark:text-neutral-500 text-center">
           タグで記事を分類しています。気になるタグを選んでください。
         </p>
 

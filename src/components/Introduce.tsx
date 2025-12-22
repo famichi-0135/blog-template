@@ -39,7 +39,7 @@ export const Introduce = () => {
               </svg>
             </Link>
             <Link
-              href="https://github.com/famichi-0135"
+              href="https://x.com/famichi0135"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:opacity-40 transition"
